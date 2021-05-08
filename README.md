@@ -1,3 +1,5 @@
+![Screenshot](algo-data.jpg)
+
 ### Algorithms and Data Structures
 
 ---
