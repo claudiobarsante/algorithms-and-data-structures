@@ -1,4 +1,4 @@
-const isPalindrome = function (s) {
+const isPalindrome = s => {
 	//? if use a regex to validate the string
 	/* time:O(n) and space O(1)
     Runtime: 92 ms, faster than 81.32% of JavaScript online submissions for Valid Palindrome.
