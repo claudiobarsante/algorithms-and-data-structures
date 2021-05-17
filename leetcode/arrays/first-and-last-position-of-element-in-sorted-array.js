@@ -37,13 +37,13 @@ var searchRange = function (nums, target) {
 	let endPosTemp = null;
 
 	while (startPos !== -1) {
-		startPosTemp = startPos; //keeps the start position
+		startPosTemp = startPos; //keeps the last valid start position
 		startPos = binarySearch(nums, 0, startPos - 1, target); //search from beginning(0) to where the target was first found(firstFound) -1
 	}
 	startPos = startPosTemp;
 
 	while (endPos !== -1) {
-		endPosTemp = endPos; //keeps the end position
+		endPosTemp = endPos; //keeps the last valid end position
 		endPos = binarySearch(nums, endPos + 1, nums.length - 1, target); //search from where the target was first found + 1 to the end of the array
 	}
 
