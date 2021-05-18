@@ -1,3 +1,9 @@
+/*
+Success
+Details 
+Runtime: 84 ms, faster than 26.56% of JavaScript online submissions for Two Sum.
+Memory Usage: 39.8 MB, less than 12.19% of JavaScript online submissions for Two Sum.
+*/
 var twoSum = function (nums, target) {
 	let map = {};
 
