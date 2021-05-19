@@ -37,19 +37,16 @@ const lengthOfLongestSubstring = s => {
 
 	let max = -Infinity;
 	let set = new Set();
-	let acum = 0;
 	let i = 0;
 	let last = 0;
 
 	while (i < s.length) {
 		if (!set.has(s[i])) {
 			set.add(s[i]);
-			acum++;
 			i++;
 		} else {
-			max = Math.max(max, acum);
+			max = Math.max(max, set.size);
 			set.clear();
-			acum = 0;
 			last++;
 			i = last;
 		}
@@ -58,6 +55,8 @@ const lengthOfLongestSubstring = s => {
 
 	return max;
 };
+
+console.log(lengthOfLongestSubstring('bbbbb'));
 
 /*
 3. Longest Substring Without Repeating Characters
