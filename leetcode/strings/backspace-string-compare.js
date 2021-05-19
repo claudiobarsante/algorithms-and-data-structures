@@ -15,12 +15,12 @@ var backspaceCompare = function (s, t) {
 	while (sPointer >= 0 || tPointer >= 0) {
 		if (s[sPointer] === '#' || t[tPointer] === '#') {
 			if (s[sPointer] === '#') {
-				let backCount = 2;
+				let backCount = 2; //you have to skip the next character and position on the immediately following character
 
 				while (backCount > 0) {
 					sPointer--;
 					backCount--;
-					if (s[sPointer] === '#') backCount += 2;
+					if (s[sPointer] === '#') backCount += 2; //if it's '#' and again 2 to backCount
 				}
 			}
 
