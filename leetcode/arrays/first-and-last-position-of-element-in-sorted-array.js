@@ -10,46 +10,46 @@ Memory Usage: 39.8 MB, less than 37.50% of JavaScript online submissions for Fin
  * @return {number[]}
  */
 var searchRange = function (nums, target) {
-	const binarySearch = (nums, left, right, target) => {
-		while (left <= right) {
-			const mid = Math.floor((left + right) / 2);
-			const foundVal = nums[mid];
-			if (foundVal === target) {
-				return mid;
-			} else if (foundVal > target) {
-				right = mid - 1;
-			} else {
-				left = mid + 1;
-			}
-		}
-		return -1;
-	};
+  const binarySearch = (nums, left, right, target) => {
+    while (left <= right) {
+      const mid = Math.floor((left + right) / 2);
+      const foundVal = nums[mid];
+      if (foundVal === target) {
+        return mid;
+      } else if (foundVal > target) {
+        right = mid - 1;
+      } else {
+        left = mid + 1;
+      }
+    }
+    return -1;
+  };
 
-	if (nums.length < 1) return [-1, -1];
+  if (nums.length < 1) return [-1, -1];
 
-	const firstFound = binarySearch(nums, 0, nums.length - 1, target);
+  const firstFound = binarySearch(nums, 0, nums.length - 1, target);
 
-	if (firstFound === -1) return [-1, -1];
+  if (firstFound === -1) return [-1, -1];
 
-	let startPos = firstFound;
-	let endPos = firstFound;
-	let startPosTemp = null;
-	let endPosTemp = null;
+  let startPos = firstFound;
+  let endPos = firstFound;
+  let startPosTemp = null;
+  let endPosTemp = null;
 
-	while (startPos !== -1) {
-		startPosTemp = startPos; //keeps the last valid start position
-		startPos = binarySearch(nums, 0, startPos - 1, target); //search from beginning(0) to where the target was first found(firstFound) -1
-	}
-	startPos = startPosTemp;
+  while (startPos !== -1) {
+    startPosTemp = startPos; //keeps the last valid start position
+    startPos = binarySearch(nums, 0, startPos - 1, target); //search from beginning(0) to where the target was first found(firstFound) -1
+  }
+  startPos = startPosTemp;
 
-	while (endPos !== -1) {
-		endPosTemp = endPos; //keeps the last valid end position
-		endPos = binarySearch(nums, endPos + 1, nums.length - 1, target); //search from where the target was first found + 1 to the end of the array
-	}
+  while (endPos !== -1) {
+    endPosTemp = endPos; //keeps the last valid end position
+    endPos = binarySearch(nums, endPos + 1, nums.length - 1, target); //search from where the target was first found + 1 to the end of the array
+  }
 
-	endPos = endPosTemp;
+  endPos = endPosTemp;
 
-	return [startPos, endPos];
+  return [startPos, endPos];
 };
 
 console.log(searchRange([1, 3, 3, 5, 5, 5, 8, 9], 5));

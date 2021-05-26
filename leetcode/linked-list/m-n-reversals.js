@@ -5,58 +5,61 @@ Runtime: 80 ms, faster than 52.49% of JavaScript online submissions for Reverse 
 Memory Usage: 38.8 MB, less than 35.87% of JavaScript online submissions for Reverse Linked List II.
 */
 class ListNode {
-	constructor(val, next = null) {
-		this.val = val;
-		this.next = next;
-	}
+  constructor(val, next = null) {
+    this.val = val;
+    this.next = next;
+  }
 }
 // ---- Generate our linked list ----
-const linkedList = [5, 4, 3, 2, 1].reduce((acc, val) => new ListNode(val, acc), null);
+const linkedList = [5, 4, 3, 2, 1].reduce(
+  (acc, val) => new ListNode(val, acc),
+  null
+);
 
 // ---- Generate our linked list ----
 
 const printList = head => {
-	if (!head) {
-		return;
-	}
+  if (!head) {
+    return;
+  }
 
-	console.log(head.val);
-	printList(head.next);
+  console.log(head.val);
+  printList(head.next);
 };
 //-- -- this linked list is not 0 indexed, so first position is equal to 1 (one)
 const reverseBetween = function (head, m, n) {
-	let currentPosition = 1;
-	let currentNode = head;
-	let start = head;
+  let currentPosition = 1;
+  let currentNode = head;
+  let start = head;
 
-	// ---- find the last list node before the start of our reverse link list section
-	// -- We also need to take that values next value later on and attach it to the start of the reverse section.
-	while (currentPosition < m) {
-		start = currentNode;
-		currentNode = currentNode.next;
-		currentPosition++;
-	}
+  // ---- find the last list node before the start of our reverse link list section
+  // -- We also need to take that values next value later on and attach it to the start of the reverse section.
+  while (currentPosition < m) {
+    start = currentNode;
+    currentNode = currentNode.next;
+    currentPosition++;
+  }
 
-	let newList = null; // --  represents the list so far equal to null
-	let tail = currentNode; //is going to be equal to the first value in the start of our reversal, here equals to 2(two)
+  let newList = null; // --  represents the list so far equal to null
+  let tail = currentNode; //is going to be equal to the first value in the start of our reversal, here equals to 2(two)
 
-	// -- start reversing between m and n positions
-	while (currentPosition >= m && currentPosition <= n) {
-		const next = currentNode.next;
-		currentNode.next = newList; // -- first time will be null
-		newList = currentNode; // -- Now we want to set newList equal to our new currentNode, because currentNode is going to represent the head of the list that we've built so far.
-		currentNode = next;
-		currentPosition++;
-	}
+  // -- start reversing between m and n positions
+  while (currentPosition >= m && currentPosition <= n) {
+    const next = currentNode.next;
+    currentNode.next = newList; // -- first time will be null
+    newList = currentNode; // -- Now we want to set newList equal to our new currentNode, because currentNode is going to represent the head of the list that we've built so far.
+    currentNode = next;
+    currentPosition++;
+  }
 
-	/* -- newList is always the head of the actual full list that we have that's
+  /* -- newList is always the head of the actual full list that we have that's
       reversed, then we're going to say that tail.next is equal to the current note.
       Because current node is currently pointing at end plus one. */
 
-	start.next = newList;
-	tail.next = currentNode;
+  start.next = newList;
+  tail.next = currentNode;
 
-	/* -- If m equals 1(one), so this means that we're reversing the position of the
+  /* -- If m equals 1(one), so this means that we're reversing the position of the
     nodes starting from the very first value, we don't really care where n goes to.
     But the thing here is that we're reversing m of one.
     What this means is that given this current example, we have the link list that gets output is going
@@ -70,11 +73,11 @@ const reverseBetween = function (head, m, n) {
     and the head of the reverse link list is equal to the newList value because remember, newList is
     always going to give us the head of the new reverse list that we have.
     And when m equals one, the newList is the very beginning of our entire linked list.*/
-	if (m > 1) {
-		return head;
-	} else {
-		return newList;
-	}
+  if (m > 1) {
+    return head;
+  } else {
+    return newList;
+  }
 };
 
 printList(linkedList);

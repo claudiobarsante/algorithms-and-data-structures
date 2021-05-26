@@ -1,20 +1,20 @@
 function solution(A) {
-	if (A.length === 1) return A[0];
+  if (A.length === 1) return A[0];
 
-	let map = {};
+  let map = {};
 
-	for (let i = 0; i < A.length; i++) {
-		const key = A[i];
-		if (map[key]) {
-			map[key]++;
-		} else {
-			map[key] = 1;
-		}
-	}
+  for (let i = 0; i < A.length; i++) {
+    const key = A[i];
+    if (map[key]) {
+      map[key]++;
+    } else {
+      map[key] = 1;
+    }
+  }
 
-	for (let key in map) {
-		if (map[key] % 2 !== 0) return Number(key);
-	}
+  for (let key in map) {
+    if (map[key] % 2 !== 0) return Number(key);
+  }
 }
 solution([9, 3, 9, 3, 9, 7, 8]);
 /*

@@ -3,31 +3,31 @@ Runtime: 116 ms, faster than 16.96% of JavaScript online submissions for Top K F
 Memory Usage: 41.7 MB, less than 70.47% of JavaScript online submissions for Top K Frequent Elements.
 */
 var topKFrequent = function (nums, k) {
-	let frequency = {};
-	let value = 0;
-	let sorted = [];
-	let mostFrequent = [];
+  let frequency = {};
+  let value = 0;
+  let sorted = [];
+  let mostFrequent = [];
 
-	for (let i = 0; i < nums.length; i++) {
-		if (!frequency[nums[i]]) {
-			frequency[nums[i]] = 1;
-		} else {
-			value = frequency[nums[i]];
-			frequency[nums[i]] = value + 1;
-		}
-	}
+  for (let i = 0; i < nums.length; i++) {
+    if (!frequency[nums[i]]) {
+      frequency[nums[i]] = 1;
+    } else {
+      value = frequency[nums[i]];
+      frequency[nums[i]] = value + 1;
+    }
+  }
 
-	for (let key in frequency) {
-		sorted.push([key, frequency[key]]);
-	}
+  for (let key in frequency) {
+    sorted.push([key, frequency[key]]);
+  }
 
-	sorted.sort((a, b) => b[1] - a[1]);
+  sorted.sort((a, b) => b[1] - a[1]);
 
-	for (let j = 0; j < k; j++) {
-		mostFrequent.unshift(sorted[j][0]);
-	}
+  for (let j = 0; j < k; j++) {
+    mostFrequent.unshift(sorted[j][0]);
+  }
 
-	return mostFrequent;
+  return mostFrequent;
 };
 
 console.log(topKFrequent([1, 1, 1, 2, 2, 3], 2));
