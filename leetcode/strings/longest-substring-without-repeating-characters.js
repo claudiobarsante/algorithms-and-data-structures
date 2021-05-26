@@ -35,25 +35,25 @@ Memory Usage: 44.3 MB, less than 55.41% of JavaScript online submissions for Lon
 const lengthOfLongestSubstring = s => {
 	if (s.length <= 1) return s.length;
 
-	let max = -Infinity;
-	let set = new Set();
+	let longest = -Infinity;
+	let seen = new Set();
 	let i = 0;
 	let last = 0;
 
 	while (i < s.length) {
-		if (!set.has(s[i])) {
-			set.add(s[i]);
+		if (!seen.has(s[i])) {
+			seen.add(s[i]);
 			i++;
 		} else {
-			max = Math.max(max, set.size);
-			set.clear();
+			longest = Math.max(longest, seen.size);
+			seen.clear();
 			last++;
 			i = last;
 		}
 	}
-	max = Math.max(max, set.size);
+	longest = Math.max(longest, seen.size);
 
-	return max;
+	return longest;
 };
 
 console.log(lengthOfLongestSubstring('bbbbb'));
