@@ -36,8 +36,8 @@ const findCycle = function (head) {
 		slow = slow.next;
 		fast = fast.next;
 
-		// -- if slow === null or slow.next === null there's no cycle or you hit the end of the linked list
-		if (slow === null || slow.next === null) {
+		// -- if fast === null or fast.next === null there's no cycle or you hit the end of the linked list
+		if (fast === null || fast.next === null) {
 			return null;
 		} else {
 			fast = fast.next;
