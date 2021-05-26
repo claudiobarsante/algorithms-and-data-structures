@@ -1,3 +1,9 @@
+/*
+Success
+Details 
+Runtime: 80 ms, faster than 52.49% of JavaScript online submissions for Reverse Linked List II.
+Memory Usage: 38.8 MB, less than 35.87% of JavaScript online submissions for Reverse Linked List II.
+*/
 class ListNode {
 	constructor(val, next = null) {
 		this.val = val;
@@ -74,3 +80,38 @@ const reverseBetween = function (head, m, n) {
 printList(linkedList);
 console.log('---after reverse---');
 printList(reverseBetween(linkedList, 2, 4));
+
+/**
+ 92. Reverse Linked List II
+Medium
+
+3710
+
+194
+
+Add to List
+
+Share
+Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.
+
+ 
+
+Example 1:
+
+
+Input: head = [1,2,3,4,5], left = 2, right = 4
+Output: [1,4,3,2,5]
+Example 2:
+
+Input: head = [5], left = 1, right = 1
+Output: [5]
+ 
+
+Constraints:
+
+The number of nodes in the list is n.
+1 <= n <= 500
+-500 <= Node.val <= 500
+1 <= left <= right <= n
+ 
+ */
