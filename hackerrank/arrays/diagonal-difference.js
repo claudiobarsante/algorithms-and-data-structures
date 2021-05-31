@@ -1,14 +1,14 @@
 function diagonalDifference(arr) {
-	// Write your code here
-	console.table(arr);
-	const n = arr.length;
-	let sum = 0;
-	for (var i = 0; i < n; i++) {
-		sum += arr[i][i]; //add from the left to center
-		sum -= arr[i][n - i - 1]; //substratc from de end to center. A 'n" is the length, to have the index substract 1(one)
-	}
+  // Write your code here
+  console.table(arr);
+  const n = arr.length;
+  let sum = 0;
+  for (var i = 0; i < n; i++) {
+    sum += arr[i][i]; //add from the left to center
+    sum -= arr[i][n - i - 1]; //substratc from de end to center. A 'n" is the length, to have the index substract 1(one)
+  }
 
-	return Math.abs(sum);
+  return Math.abs(sum);
 }
 
 /*

@@ -6,32 +6,34 @@ Memory Usage: 45.9 MB, less than 77.11% of JavaScript online submissions for Val
 Next challenges:
 */
 const validPalindrome = function (s) {
-	const isPalindrome = (s, left, right) => {
-		while (left < right) {
-			if (s[left] !== s[right]) {
-				return false;
-			} else {
-				left++;
-				right--;
-			}
-		}
-		return true;
-	};
+  const isPalindrome = (s, left, right) => {
+    while (left < right) {
+      if (s[left] !== s[right]) {
+        return false;
+      } else {
+        left++;
+        right--;
+      }
+    }
+    return true;
+  };
 
-	let left = 0;
-	let right = s.length - 1;
+  let left = 0;
+  let right = s.length - 1;
 
-	while (left < right) {
-		if (s[left] !== s[right]) {
-			//try first moving one char to the right and then try moving one char to the left
-			return isPalindrome(s, left + 1, right) || isPalindrome(s, left, right - 1);
-		} else {
-			left++;
-			right--;
-		}
-	}
+  while (left < right) {
+    if (s[left] !== s[right]) {
+      //try first moving one char to the right and then try moving one char to the left
+      return (
+        isPalindrome(s, left + 1, right) || isPalindrome(s, left, right - 1)
+      );
+    } else {
+      left++;
+      right--;
+    }
+  }
 
-	return true;
+  return true;
 };
 
 validPalindrome('aba');

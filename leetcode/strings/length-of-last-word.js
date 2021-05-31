@@ -8,24 +8,24 @@ Memory Usage: 38.6 MB, less than 45.84% of JavaScript online submissions for Len
  * @return {number}
  */
 var lengthOfLastWord = function (s) {
-	if (s === ' ') return 0;
-	if (s.length <= 1) return s.length;
+  if (s === ' ') return 0;
+  if (s.length <= 1) return s.length;
 
-	let index = s.length - 1;
+  let index = s.length - 1;
 
-	let count = 0;
+  let count = 0;
 
-	while (index >= 0) {
-		if (s[index] === ' ') {
-			if (count > 0) return count;
-		} else {
-			count++;
-		}
+  while (index >= 0) {
+    if (s[index] === ' ') {
+      if (count > 0) return count;
+    } else {
+      count++;
+    }
 
-		index--;
-	}
+    index--;
+  }
 
-	return count;
+  return count;
 };
 
 console.log(lengthOfLastWord('Hello World'));

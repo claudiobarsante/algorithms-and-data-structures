@@ -1,16 +1,16 @@
 function solution(A, K) {
-	if (A.length === 0) return [];
-	if (A.length === 1) return A;
+  if (A.length === 0) return [];
+  if (A.length === 1) return A;
 
-	for (let i = 1; i <= K; i++) {
-		const lastIdx = A.length - 1;
-		const pop = A[lastIdx];
-		A.pop();
-		A.unshift(pop);
-	}
+  for (let i = 1; i <= K; i++) {
+    const lastIdx = A.length - 1;
+    const pop = A[lastIdx];
+    A.pop();
+    A.unshift(pop);
+  }
 
-	console.log('result ', A);
-	return A;
+  console.log('result ', A);
+  return A;
 }
 
 solution([1, 2, 3, 4], 4);

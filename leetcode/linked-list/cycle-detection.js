@@ -1,20 +1,23 @@
 class ListNode {
-	constructor(val, next = null) {
-		this.val = val;
-		this.next = next;
-	}
+  constructor(val, next = null) {
+    this.val = val;
+    this.next = next;
+  }
 }
 // ---- Generate our linked list ----
-const linkedList = [8, 7, 6, 5, 4, 3, 2, 1].reduce((acc, val) => new ListNode(val, acc), null);
+const linkedList = [8, 7, 6, 5, 4, 3, 2, 1].reduce(
+  (acc, val) => new ListNode(val, acc),
+  null
+);
 
 let curr = linkedList,
-	cycleNode;
+  cycleNode;
 while (curr.next !== null) {
-	if (curr.val === 3) {
-		cycleNode = curr;
-	}
+  if (curr.val === 3) {
+    cycleNode = curr;
+  }
 
-	curr = curr.next;
+  curr = curr.next;
 }
 
 curr.next = cycleNode;
@@ -27,34 +30,34 @@ Runtime: 88 ms, faster than 80.90% of JavaScript online submissions for Linked L
 Memory Usage: 41.3 MB, less than 44.76% of JavaScript online submissions for Linked List Cycle II.
  */
 const findCycle = function (head) {
-	if (!head) return null;
+  if (!head) return null;
 
-	let slow = head;
-	let fast = head;
+  let slow = head;
+  let fast = head;
 
-	while (true) {
-		slow = slow.next;
-		fast = fast.next;
+  while (true) {
+    slow = slow.next;
+    fast = fast.next;
 
-		// -- if fast === null or fast.next === null there's no cycle or you hit the end of the linked list
-		if (fast === null || fast.next === null) {
-			return null;
-		} else {
-			fast = fast.next;
-		}
+    // -- if fast === null or fast.next === null there's no cycle or you hit the end of the linked list
+    if (fast === null || fast.next === null) {
+      return null;
+    } else {
+      fast = fast.next;
+    }
 
-		if (slow === fast) break;
-	}
+    if (slow === fast) break;
+  }
 
-	let pointerOne = head;
-	let pointerTwo = fast;
+  let pointerOne = head;
+  let pointerTwo = fast;
 
-	while (pointerOne !== pointerTwo) {
-		pointerOne = pointerOne.next;
-		pointerTwo = pointerTwo.next;
-	}
+  while (pointerOne !== pointerTwo) {
+    pointerOne = pointerOne.next;
+    pointerTwo = pointerTwo.next;
+  }
 
-	return pointerOne;
+  return pointerOne;
 };
 
 console.log(findCycle(linkedList));

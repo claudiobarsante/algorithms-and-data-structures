@@ -5,19 +5,19 @@ Runtime: 84 ms, faster than 26.56% of JavaScript online submissions for Two Sum.
 Memory Usage: 39.8 MB, less than 12.19% of JavaScript online submissions for Two Sum.
 */
 var twoSum = function (nums, target) {
-	let map = {};
+  let map = {};
 
-	for (let i = 0; i < nums.length; i++) {
-		const num = nums[i];
-		const needed = target - num;
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    const needed = target - num;
 
-		if (needed in map) {
-			const index = map[needed];
-			return [index, i];
-		} else {
-			map[num] = i;
-		}
-	}
+    if (needed in map) {
+      const index = map[needed];
+      return [index, i];
+    } else {
+      map[num] = i;
+    }
+  }
 };
 
 console.log(twoSum([2, 7, 11, 15], 9));

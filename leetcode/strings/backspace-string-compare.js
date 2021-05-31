@@ -9,41 +9,41 @@ Memory Usage: 38.3 MB, less than 97.88% of JavaScript online submissions for Bac
  * @return {boolean}
  */
 var backspaceCompare = function (s, t) {
-	let sPointer = s.length - 1;
-	let tPointer = t.length - 1;
+  let sPointer = s.length - 1;
+  let tPointer = t.length - 1;
 
-	while (sPointer >= 0 || tPointer >= 0) {
-		if (s[sPointer] === '#' || t[tPointer] === '#') {
-			if (s[sPointer] === '#') {
-				let backCount = 2; //you have to skip the next character and position on the immediately following character
+  while (sPointer >= 0 || tPointer >= 0) {
+    if (s[sPointer] === '#' || t[tPointer] === '#') {
+      if (s[sPointer] === '#') {
+        let backCount = 2; //you have to skip the next character and position on the immediately following character
 
-				while (backCount > 0) {
-					sPointer--;
-					backCount--;
-					if (s[sPointer] === '#') backCount += 2; //if it's '#' and again 2 to backCount
-				}
-			}
+        while (backCount > 0) {
+          sPointer--;
+          backCount--;
+          if (s[sPointer] === '#') backCount += 2; //if it's '#' and again 2 to backCount
+        }
+      }
 
-			if (t[tPointer] === '#') {
-				let backCount = 2;
+      if (t[tPointer] === '#') {
+        let backCount = 2;
 
-				while (backCount > 0) {
-					tPointer--;
-					backCount--;
-					if (t[tPointer] === '#') backCount += 2;
-				}
-			}
-		} else {
-			if (s[sPointer] !== t[tPointer]) {
-				return false;
-			} else {
-				sPointer--;
-				tPointer--;
-			}
-		}
-	}
+        while (backCount > 0) {
+          tPointer--;
+          backCount--;
+          if (t[tPointer] === '#') backCount += 2;
+        }
+      }
+    } else {
+      if (s[sPointer] !== t[tPointer]) {
+        return false;
+      } else {
+        sPointer--;
+        tPointer--;
+      }
+    }
+  }
 
-	return true;
+  return true;
 };
 
 console.log(backspaceCompare('ab#c', 'ad#c'));
