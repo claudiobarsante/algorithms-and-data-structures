@@ -15,3 +15,9 @@ The solutions and exercises are divided into the following folders
 - 📁 Codility
 - 📁 Leetcode
 - 📁 HackerRank
+
+## 🏆
+
+On 06/31/2021 I received my first gold badge from HackerRank
+
+![Screenshot](hackerrank.jpg)
