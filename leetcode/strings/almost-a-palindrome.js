@@ -36,7 +36,7 @@ const validPalindrome = function (s) {
   return true;
 };
 
-validPalindrome('aba');
+console.log(validPalindrome('aba'));
 
 //? Tests cases
 // "racecar"  - already a plalindrome returs true
