@@ -64,20 +64,18 @@ var isValid = function (s) {
   if (s.length <= 1) return false;
 
   let stack = [];
+  const closed = ['()', '{}', '[]'];
+  const onlyLeftBrackets = ['(', '{', '['];
 
   for (let i = 0; i < s.length; i++) {
-    const bracket = s[i];
+    const currentBracket = s[i];
 
-    if (bracket === '(' || bracket === '{' || bracket === '[') {
-      stack.push(bracket);
+    if (onlyLeftBrackets.includes(currentBracket)) {
+      stack.push(currentBracket);
     } else {
-      const leftBracket = stack.pop();
+      const poppedLeftBracket = stack.pop();
 
-      if (
-        `${leftBracket}${bracket}` !== '()' &&
-        `${leftBracket}${bracket}` !== '{}' &&
-        `${leftBracket}${bracket}` !== '[]'
-      )
+      if (!closed.includes(`${poppedLeftBracket}${currentBracket}`))
         return false;
     }
   }
