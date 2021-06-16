@@ -90,6 +90,54 @@ class BinarySearchTree {
 
     return result;
   }
+
+  dfsPreOrder() {
+    if (this.root === null) return false;
+
+    let visited = [];
+
+    function traverse(node) {
+      visited.push(node.value);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+
+    traverse(this.root);
+
+    return visited;
+  }
+
+  dfsInOrder() {
+    if (this.root === null) return false;
+
+    let visited = [];
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      visited.push(node.value);
+      if (node.right) traverse(node.right);
+    }
+
+    traverse(this.root);
+
+    return visited;
+  }
+
+  dfsPostOrder() {
+    if (this.root === null) return false;
+
+    let visited = [];
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      visited.push(node.value);
+    }
+
+    traverse(this.root);
+
+    return visited;
+  }
 }
 let tree = new BinarySearchTree();
 tree.insert(10);
