@@ -69,6 +69,27 @@ class BinarySearchTree {
     }
     return false;
   }
+
+  bfs() {
+    if (this.root === null) return false;
+
+    let node = this.root;
+
+    let queue = [];
+    let result = [];
+
+    queue.push(node);
+
+    while (queue.length) {
+      node = queue.shift();
+      result.push(node.value);
+
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+
+    return result;
+  }
 }
 let tree = new BinarySearchTree();
 tree.insert(10);
