@@ -20,6 +20,11 @@ Write a solution that's efficient even when we can't put a nice upper bound on t
   
   */
 
+/**Here's a formal algorithm:
+
+1. We treat the meeting with earlier start time as "first," and the other as "second."
+2. If the end time of the first meeting is equal to or greater than the start time of the second meeting, we merge the two meetings into one time range. The resulting time range's start time is the first meeting's start, and its end time is the later of the two meetings' end times.
+3. Else, we leave them separate. */
 function mergeRanges(meetings) {
   //sort meetings by startTime
   meetings.sort((a, b) => a[0] - b[0]);
@@ -28,29 +33,26 @@ function mergeRanges(meetings) {
 
   for (let i = 1; i < meetings.length; i++) {
     const currentMeeting = meetings[i];
-    const lastMergedMeeting = mergedMeeting[mergedMeeting.length - 1];
-    // If the current meeting overlaps with the last merged meeting, use the
-    // later end time of the two
-    if (currentMeeting.startTime <= lastMergedMeeting.endTime) {
-      lastMergedMeeting.endTime = Math.max(
-        lastMergedMeeting.endTime,
-        currentMeeting.endTime
-      );
-    } else {
-      mergedMeeting.push(currentMeeting);
+    const lastMergedMeeting = mergedMeetings[mergedMeetings.length - 1];
+
+    if (lastMergedMeeting.endTime < currentMeeting.startTime) {
+      mergedMeetings.push(currentMeeting);
+    } else if (lastMergedMeeting.endTime < currentMeeting.endTime) {
+      mergedMeetings[mergedMeetings.length - 1].endTime =
+        currentMeeting.endTime;
     }
   }
   return mergedMeetings;
 }
 
 console.log(
-  mergeRanges(
+  mergeRanges([
     { startTime: 1, endTime: 10 },
     { startTime: 2, endTime: 5 },
     { startTime: 6, endTime: 8 },
     { startTime: 9, endTime: 10 },
     { startTime: 10, endTime: 12 }
-  )
+  ])
 );
 
 // Tests
