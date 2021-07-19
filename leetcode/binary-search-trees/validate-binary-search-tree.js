@@ -21,7 +21,7 @@ var isValidBST = function (root) {
 };
 
 function validadeHelper(root, min, max) {
-  if (root.val === null) return true;
+  if (root === null) return true;
 
   if (root.val <= min || root.val >= max) return false;
 
