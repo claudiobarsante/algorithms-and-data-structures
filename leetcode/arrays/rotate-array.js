@@ -50,16 +50,49 @@ Could you do it in-place with O(1) extra space?
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 
-//todo: Brute force working, but still need to refactor for larger arrays.
+/**
+ * https://betterprogramming.pub/3-ways-to-rotate-an-array-2a45b39f7bec
+ * Approach #3: Reversing the Sections
+In this third approach, we’re going to be reversing parts of the nums. The first time, we reverse the entire array. The second time, we reverse the first k elements of the array. The third time, we reverse the final elements of the array, from k to the end.
+The idea behind this approach is best be seen with an example. We start with the array [1, 2, 3, 4, 5], and we want to rotate it two steps. We start by rotating the entire array.
+
+[1, 2, 3, 4, 5] -> [5, 4, 3, 2, 1]
+Now, we’ll want to rotate the first k elements. Since k is 2, we’ll rotate the elements at 0 and 1.
+
+[5, 4, 3, 2, 1] -> [4, 5, 3, 2, 1]
+Finally, we’ll rotate the last elements, from index k to the end. This gives us the final array that we want.
+
+[4, 5, 3, 2, 1] -> [4, 5, 1, 2, 3]
+Coding the third approach
+To code this solution, we’ll write a function called reverse within the rotate function, and we’ll call it three times. To start, however, we’ll do the same modification to k that we did in the previous two approaches.
+
+Then, we’ll call the function reverse (which we’ll write in a minute), and we’ll call it three times. reverse() will take in the array, the index to start reversing, and the index to end reversing. So, the first call to reverse() will pass in nums, 0 (as the start index), and nums.length — 1 (as the end index). The second call to reverse() will pass in nums, 0 (as the start index), and k — 1 (as the end index). The third call to reverse() will pass in nums, k (as the start index), and nums.length — 1 (as the end index).
+
+Now, we can write the function reverse, whose parameters will be nums, start, and end. In this function, we switch the values at the start and end index, and move start and end toward the center. We keep doing this as long as start is less than end.
+So, we write a while loop, that will keep going as long as start is less than end. Inside the loop, we keep a temporary variable that stores the value of the nums array at the start index. Then, we set the value at the start index equal to the value at the end index and the value at the end index equal to the temporary variable. We move start toward the middle by incrementing it and we move the end toward the middle by decrementing it. Finally, when the while loop has executed, well return nums to the rotate function.} nums 
+ * 
+ */
 var rotate = function (nums, k) {
-  let temp = 0;
-  let previous = 0;
-  for (let i = 0; i < k; i++) {
-    previous = nums[nums.length - 1];
-    for (let j = 0; j < nums.length; j++) {
-      temp = nums[j];
-      nums[j] = previous;
-      previous = temp;
+  k = k % nums.length;
+
+  reverse(nums, 0, nums.length - 1); // -- rotating the entire array
+  reverse(nums, 0, k - 1); // -- rotate first section from beginning to k-1 (index of the last element)
+  reverse(nums, k, nums.length - 1); // -- rotate last section from k to nums.length-1
+
+  function reverse(nums, start, end) {
+    while (start < end) {
+      const temp = nums[start];
+      nums[start] = nums[end];
+      nums[end] = temp;
+
+      start++;
+      end--;
     }
+
+    return nums;
   }
+
+  return nums;
 };
+
+console.log(rotate([1, 2, 3, 4, 5], 2));
