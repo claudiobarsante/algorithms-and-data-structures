@@ -25,23 +25,22 @@ Write an efficient algorithm for the following assumptions:
 N is an integer within the range [1..2,147,483,647].
  */
 
-
 function solution(N) {
-     // write your code in JavaScript (Node.js 8.9.4)
-     let longest = 0;
-     let temp = 0;
- 
-     const binary = N.toString(2);    
-   
-     for(let i = 0; i < binary.length; i++){
-         const num = binary[i];
-         if(num === "1"){           
-             longest = Math.max(longest,temp);
-             temp = 0;
-         }else{
-             temp++;
-         }
-     }
- 
-     return longest;
- }
+  // write your code in JavaScript (Node.js 8.9.4)
+  let longest = 0;
+  let temp = 0;
+
+  const binary = N.toString(2);
+
+  for (let i = 0; i < binary.length; i++) {
+    const num = binary[i];
+    if (num === '1') {
+      longest = Math.max(longest, temp);
+      temp = 0;
+    } else {
+      temp++;
+    }
+  }
+
+  return longest;
+}
