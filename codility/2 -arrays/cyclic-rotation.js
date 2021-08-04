@@ -15,6 +15,32 @@ function solution(A, K) {
 
 solution([1, 2, 3, 4], 4);
 
+// -- Optomized version --------------------------------
+function solution(A, K) {
+  // write your code in JavaScript (Node.js 8.9.4)
+  const idx = K % A.length;
+
+
+  function reverse(A,left,right){
+      while(left < right){
+          const temp  = A[left];
+          A[left] = A[right];
+          A[right] = temp;
+          left++;
+          right--;
+      }
+      return A;
+      
+  }
+
+  reverse(A,0,A.length -1);
+  reverse(A,0,idx-1);
+  reverse(A,idx,A.length-1);
+
+  return A;
+}
+
+
 /*Tasks Details
 Easy
 1. CyclicRotation
