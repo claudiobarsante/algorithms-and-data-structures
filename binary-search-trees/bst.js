@@ -73,27 +73,27 @@ class BinarySearchTree {
   bfs() {
     if (this.root === null) return false;
 
-    let node = this.root;
-
+    let visited = [];
     let queue = [];
-    let result = [];
+    let node = this.root;
 
     queue.push(node);
 
-    while (queue.length) {
+    while (queue.length > 0) {
       node = queue.shift();
-      result.push(node.value);
+      visited.push(node.value);
 
       if (node.left) queue.push(node.left);
       if (node.right) queue.push(node.right);
     }
 
-    return result;
+    return visited;
   }
 
   dfsPreOrder() {
     if (this.root === null) return false;
 
+    let node = this.root;
     let visited = [];
 
     function traverse(node) {
@@ -102,7 +102,7 @@ class BinarySearchTree {
       if (node.right) traverse(node.right);
     }
 
-    traverse(this.root);
+    traverse(node);
 
     return visited;
   }
@@ -110,15 +110,16 @@ class BinarySearchTree {
   dfsInOrder() {
     if (this.root === null) return false;
 
+    let node = this.root;
     let visited = [];
 
     function traverse(node) {
-      if (node.left) traverse(node.left);
+      if (node.left) visited.push(node.left);
       visited.push(node.value);
-      if (node.right) traverse(node.right);
+      if (node.right) visited.push(node.right);
     }
 
-    traverse(this.root);
+    traverse(node);
 
     return visited;
   }
@@ -126,15 +127,16 @@ class BinarySearchTree {
   dfsPostOrder() {
     if (this.root === null) return false;
 
+    let node = this.root;
     let visited = [];
 
     function traverse(node) {
-      if (node.left) traverse(node.left);
-      if (node.right) traverse(node.right);
+      if (node.left) visited.push(node.left);
+      if (node.right) visited.push(node.right);
       visited.push(node.value);
     }
 
-    traverse(this.root);
+    traverse(node);
 
     return visited;
   }
