@@ -30,23 +30,22 @@ string S consists only of the following characters: "(", "{", "[", "]", "}" and/
  */
 function solution(S) {
   // write your code in JavaScript (Node.js 8.9.4)
-  if (S.length === 0) return 1;
+  if (S.length <= 1) return false;
+
   const left = '{[(';
+
   let stack = [];
 
   for (let i = 0; i < S.length; i++) {
-    const char = S[i];
-    if (left.indexOf(char) >= 0) {
-      stack.push(char);
+    if (left.indexOf(S[i]) >= 0) {
+      stack.push(S[i]);
     } else {
-      if (stack.length === 0) return 0;
+      if (stack.length === 0) return false;
       const last = stack.pop();
-      const pair = `${last}${char}`;
+      const pair = `${last}${S[i]}`;
       if (pair !== '{}' && pair !== '[]' && pair !== '()') return 0;
     }
   }
 
-  if (stack.length === 0) return 1;
-
-  return 0;
+  return stack.length === 0;
 }
