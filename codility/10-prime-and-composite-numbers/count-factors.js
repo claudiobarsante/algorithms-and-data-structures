@@ -28,19 +28,18 @@ N is an integer within the range [1..2,147,483,647].
 function solution(N) {
   // write your code in JavaScript (Node.js 8.9.4)
   if (N === 1) return 1;
+
+  let count = 0;
   let i = 1;
-  let result = 0;
 
   while (i * i < N) {
-    if (N % i === 0) {
-      result += 2;
-    }
+    if (N % i === 0) count += 2;
     i++;
-
-    if (i * i === N) result += 1;
   }
 
-  return result;
+  if (i * i === N) count += 1;
+
+  return count;
 }
 
 console.log(solution(24));
