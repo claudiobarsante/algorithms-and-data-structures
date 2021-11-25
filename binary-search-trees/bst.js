@@ -69,7 +69,7 @@ class BinarySearchTree {
     }
     return false;
   }
-
+  //breath first search
   bfs() {
     if (this.root === null) return false;
 
@@ -89,7 +89,7 @@ class BinarySearchTree {
 
     return visited;
   }
-
+  //depth first search
   dfsPreOrder() {
     if (this.root === null) return false;
 
