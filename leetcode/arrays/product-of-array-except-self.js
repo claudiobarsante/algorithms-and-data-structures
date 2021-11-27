@@ -59,7 +59,7 @@ var productExceptSelf = function (nums) {
     left.push(product);
   }
 
-  //from right
+  //reading from the last element from right
   product = 1;
   for (let i = nums.length - 1; i > 0; i--) {
     product = product * nums[i];
