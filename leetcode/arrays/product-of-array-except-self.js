@@ -52,14 +52,14 @@ var productExceptSelf = function (nums) {
 
   let output = [];
 
-  //starting product from left
+  //starting product from left, do not reach last element to the right
   let product = 1;
   for (let i = 0; i < nums.length - 1; i++) {
     product = product * nums[i];
     left.push(product);
   }
 
-  //reading from the last element from right
+  //reading from the last element from right, dno not reach the first element to the left
   product = 1;
   for (let i = nums.length - 1; i > 0; i--) {
     product = product * nums[i];
@@ -68,7 +68,7 @@ var productExceptSelf = function (nums) {
 
   //Multiply each result to final output
   /**
-   * EX:[1,2,3,]
+   * EX:[1,2,3,4]
    * left = [1,1,2,6]
    * right=[24,12,4,1]
    * output=[(24*1),(1*12),(2*4),(6*1)]
