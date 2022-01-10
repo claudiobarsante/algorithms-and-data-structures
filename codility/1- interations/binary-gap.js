@@ -44,3 +44,28 @@ function solution(N) {
 
   return longest;
 }
+
+// -- considering that the first elements could be 0
+function solution(N) {
+  // write your code in JavaScript (Node.js 8.9.4)
+  const binary = N.toString(2);
+
+  let longest = 0;
+  let isCounting = false;
+  let current = 0;
+
+  for (let i = 0; i < binary.length; i++) {
+    const num = binary[i];
+
+    if (num === '1' && isCounting === false) {
+      isCounting = true;
+    } else if (num === '1' && isCounting) {
+      longest = Math.max(longest, current);
+      current = 0;
+    } else if (num === '0' && isCounting) {
+      current++;
+    }
+  }
+
+  return longest;
+}
