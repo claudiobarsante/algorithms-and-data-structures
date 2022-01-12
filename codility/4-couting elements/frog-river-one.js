@@ -60,6 +60,9 @@ function solution(X, A) {
   //    then remove the number from the set.
   // 3. when the set becomes "empty",
   //    all the numbers "1~X" have appeared
+  if (A.length === 1 && A[0] === 1) return 0;
+  if (A.length === 1 && A[0] > 1) return -1;
+
   let set = new Set();
   // put "1->X" into the set first
   for (let i = 1; i <= X; i++) {
