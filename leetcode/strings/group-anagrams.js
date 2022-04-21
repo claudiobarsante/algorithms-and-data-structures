@@ -57,3 +57,23 @@ var groupAnagrams = function (strs) {
   // The Object.values() method returns an array of a given object's own enumerable property values, in the same order as that provided by a for...in loop
   return Object.values(output);
 };
+//or
+var groupAnagramsAlternativeVersion = function (strs) {
+  let sortedWords = {};
+
+  function handleOrder(word) {
+    return word.split('').sort().join('');
+  }
+
+  for (let i = 0; i < strs.length; i++) {
+    const word = handleOrder(strs[i]);
+
+    if (word in sortedWords) {
+      sortedWords[word] = [...sortedWords[word], strs[i]];
+    } else {
+      sortedWords[word] = [strs[i]];
+    }
+  }
+
+  return Object.values(sortedWords);
+};
