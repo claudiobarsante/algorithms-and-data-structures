@@ -35,24 +35,19 @@ each element of array A is an integer within the range [−1,000,000..1,000,000]
 
 function solution(A) {
   // write your code in JavaScript (Node.js 8.9.4)
-  let last = A.length;
-
+  if (A.length === 1 && A[0] !== 1) return 1;
   let set = new Set();
+  for (let i = 1; i < A.length; i++) set.add(i);
 
-  for (let i = 1; i <= last; i++) {
-    set.add(i);
+  for (let i = 0; i < A.length; i++) {
+    const num = A[i];
+    if (num > 0 && set.has(num)) set.delete(num);
   }
 
-  for (let j = 0; j < A.length; j++) {
-    const num = A[j];
-    if (set.has(num)) set.delete(num);
-  }
+  if (set.size === 0) return A.length + 1;
 
-  if (set.size === 0) return last + 1;
-
-  const setValues = set.values();
-  const val = setValues.next();
-  return val.value;
+  const interator = set.values();
+  return interator.next().value;
 }
 
 // -- or
