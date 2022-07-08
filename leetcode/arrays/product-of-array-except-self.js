@@ -109,3 +109,45 @@ var productExceptSelfOptimized = function (nums) {
 
   return output;
 };
+
+//? -- Not optimized
+/**
+ 
+  // @param {number[]} nums
+  // @return {number[]}
+
+var productExceptSelf = function(nums) {
+    
+  let prefix = Array.from({length: nums.length}, ()=> 0);
+  let sufix =  Array.from({length: nums.length}, ()=> 0);
+  
+  let base = 1;
+  
+  for(let i = 0; i < nums.length; i++){
+      const num  = nums[i];
+      prefix[i] = (num*base);
+      base = num*base;        
+  }
+  
+  base = 1;
+  const lastIdx = nums.length - 1;
+  
+  for(let i = lastIdx; i >=0; i-- ){
+      const num  = nums[i];
+      sufix[i] = (num*base);
+      base = num*base;        
+  }
+    
+  
+  let output = [];
+  
+  for(let i = 0; i < nums.length; i++){
+      const previous = i === 0 ? 1 : prefix[i-1];
+      const next = i === lastIdx ? 1 : sufix[i+1];
+      output.push(previous*next)
+   }
+  
+  return output;
+  
+};
+ */
