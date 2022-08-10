@@ -57,3 +57,34 @@ function solution(E, L) {
 
   return 5 + exceeded * 4;
 }
+
+//* other solution
+function solution(E, L) {
+  // write your code in JavaScript (Node.js 8.9.4)
+  const start = new Date(`2022-08-08 ${E}`);
+  const end = new Date(`2022-08-08 ${L}`);
+
+  const diff = end.getTime() - start.getTime();
+  const totalMinutes = diff / (60 * 1000); // (minutes*miliseconds)= result in minutes
+  //for result in hours (seconds*minutes*miliseconds) (60*60*1000)
+
+  if (totalMinutes < 60) return 5;
+
+  if (totalMinutes >= 60) {
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    const ticket = 2;
+    let firstFull = 0;
+    let exceed = 0;
+
+    if (hours === 1) firstFull = 3;
+    if (hours > 1) {
+      firstFull = 3;
+      exceed = (hours - 1) * 4;
+    }
+
+    if (minutes > 0) exceed += 4;
+
+    return ticket + firstFull + exceed;
+  }
+}
