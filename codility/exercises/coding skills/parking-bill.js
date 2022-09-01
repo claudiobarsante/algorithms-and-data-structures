@@ -65,7 +65,7 @@ function solution(E, L) {
   const end = new Date(`2022-08-08 ${L}`);
 
   const diff = end.getTime() - start.getTime();
-  const totalMinutes = diff / (60 * 1000); // (minutes*miliseconds)= result in minutes
+  const totalMinutes = diff / (60 * 1000); // (seconds*miliseconds)= result in minutes
   //for result in hours (seconds*minutes*miliseconds) (60*60*1000)
 
   if (totalMinutes < 60) return 5;
