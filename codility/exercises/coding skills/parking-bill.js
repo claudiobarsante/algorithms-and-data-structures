@@ -88,3 +88,29 @@ function solution(E, L) {
     return ticket + firstFull + exceed;
   }
 }
+
+//*Other solution
+const start = new Date(`2022-09-21 ${E}`);
+const end = new Date(`2022-09-21 ${L}`);
+
+let totalMinutes = (end.getTime() - start.getTime()) / (1000 * 60);
+
+if (totalMinutes <= 60) return 5;
+
+//first full
+const firstFull = 3;
+totalMinutes -= 60;
+
+//extra
+let extra = 0;
+if (totalMinutes > 0) {
+  //if totalMinutes = 0, there's no extra
+  if (totalMinutes >= 60) {
+    const total = Math.ceil(totalMinutes / 60);
+    extra = total * 4;
+  } else {
+    extra = 4;
+  }
+}
+
+return 2 + firstFull + extra;

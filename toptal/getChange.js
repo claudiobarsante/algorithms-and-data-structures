@@ -1,5 +1,6 @@
 function getChange(price, gived) {
   const coins = [0.01, 0.05, 0.1, 0.25, 0.5, 1];
+
   let result = Array.from({ length: coins.length }, () => 0);
   let change = (gived - price).toPrecision(2);
 
