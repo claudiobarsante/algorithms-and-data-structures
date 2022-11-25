@@ -97,11 +97,12 @@ let totalMinutes = (end.getTime() - start.getTime()) / (1000 * 60);
 
 if (totalMinutes <= 60) return 5;
 
-//first full
+//*first full
+//if totalMinutes > 60min there's one first full or partial
 const firstFull = 3;
 totalMinutes -= 60;
 
-//extra
+//*extra
 let extra = 0;
 if (totalMinutes > 0) {
   //if totalMinutes = 0, there's no extra
@@ -114,3 +115,21 @@ if (totalMinutes > 0) {
 }
 
 return 2 + firstFull + extra;
+
+//? Best
+function solution(E, L) {
+  // write your code in JavaScript (Node.js 14)
+  const start = new Date(`2022-11-25 ${E}`);
+  const end = new Date(`2022-11-25 ${L}`);
+
+  let totalMinutes = (end.getTime() - start.getTime()) / (1000 * 60);
+
+  let ticket = 2 + 3;
+
+  if (totalMinutes <= 60) return ticket;
+
+  totalMinutes -= 60;
+
+  const extra = Math.ceil(totalMinutes / 60);
+  return ticket + extra * 4;
+}
