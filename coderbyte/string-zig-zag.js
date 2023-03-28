@@ -25,7 +25,7 @@ function StringZigzag(strArr) {
   const rows = Array.from({ length: range }, () => []);
 
   let row = 0;
-  let moveTo = 1;
+  let direction = 1;
 
   for (let i = 0; i < string.length; i++) {
     const char = string[i];
@@ -33,10 +33,10 @@ function StringZigzag(strArr) {
 
     const isToChangeDirection = row === range - 1; // -- reached last row
 
-    if (row === 0) moveTo = 1;
-    if (isToChangeDirection) moveTo = -1;
+    if (row === 0) direction = 1;
+    if (isToChangeDirection) direction = -1;
 
-    row += moveTo;
+    row += direction;
   }
 
   return rows.flat().join('');
