@@ -57,22 +57,36 @@ When we encounter nums[j] !== [i], the duplicate run has ended so we must copy i
   until jj reaches the end of array.
  */
 /**
+
+//? -- better version
+/**
  * @param {number[]} nums
  * @return {number}
  */
 var removeDuplicates = function (nums) {
-  if (nums.length === 0) return 0;
-
-  let i = 0;
-
-  for (let j = 1; j < nums.length; j++) {
-    if (nums[j] !== nums[i]) {
-      i++;
-      nums[i] = nums[j];
+  // *0 is the initially position with an unique number, so the first position to swap will be 1 */
+  let index = 1;
+  for (let i = 0; i < nums.length - 1; i++) {
+    if (nums[i] !== nums[i + 1]) {
+      nums[index] = nums[i + 1];
+      index++; // increment for the next position to swap
     }
   }
-
-  console.log('nums', nums, i);
-
-  return i + 1;
+  return index; // as index starts with 1, index will be the number of unique numbers
 };
+// var removeDuplicates = function (nums) {
+//   if (nums.length === 0) return 0;
+
+//   let i = 0;
+
+//   for (let j = 1; j < nums.length; j++) {
+//     if (nums[j] !== nums[i]) {
+//       i++;
+//       nums[i] = nums[j];
+//     }
+//   }
+
+//   console.log('nums', nums, i);
+
+//   return i + 1;
+// };
