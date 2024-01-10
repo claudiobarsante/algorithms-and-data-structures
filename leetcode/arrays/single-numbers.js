@@ -57,3 +57,17 @@ var singleNumber = function (nums) {
 };
 
 console.log(singleNumber([4, 1, 2, 1, 2]));
+
+// -- another solution
+var singleNumber = function (nums) {
+  const total = nums.reduce((acc, num) => acc + num, 0);
+  const unique = Array.from(new Set(nums)).reduce((acc, num) => acc + num, 0);
+
+  return 2 * unique - total;
+};
+/*total is the sum of all numbers in nums
+unique is the sum of all unique numbers of nums
+if each element in the array appears twice except for one element which appears only once
+so unique*2 will be the total if all elements appears twice
+the difference between unique*2 -total will be the element wich appeards once
+*/
