@@ -56,3 +56,23 @@ var moveZeroes = function (nums) {
 
   return nums;
 };
+
+/*Another solution
+ *This version of the code ensures that when a non-zero element is encountered,
+ *it is swapped with the leftmost zero element
+ */
+var moveZeroes = function (nums) {
+  let left = 0;
+  let right = 0;
+
+  while (right < nums.length) {
+    if (nums[right] !== 0) {
+      // Swap non-zero elements with the leftmost zero
+      [nums[left], nums[right]] = [nums[right], nums[left]];
+      left++;
+    }
+    right++;
+  }
+
+  return nums;
+};
