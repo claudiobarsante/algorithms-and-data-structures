@@ -96,3 +96,28 @@ var plusOne = function (digits) {
 };
 
 console.log(plusOne([6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]));
+
+/*another solution*/
+var plusOne = function (digits) {
+  const n = digits.length;
+
+  for (let i = n - 1; i >= 0; i--) {
+    // Increment the current digit
+    digits[i]++;
+
+    // If the digit becomes 10, set it to 0 and carry 1 to the next digit
+    if (digits[i] === 10) {
+      digits[i] = 0;
+    } else {
+      // If the digit is less than 10, no need to carry, so we can break the loop
+      return digits;
+    }
+  }
+
+  // If we reach here, it means there is a carry from the leftmost digit
+  digits.unshift(1);
+
+  return digits;
+};
+
+console.log(plusOne([1, 5, 1, 9]));
