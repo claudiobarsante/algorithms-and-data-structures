@@ -74,19 +74,38 @@ var removeDuplicates = function (nums) {
   }
   return index; // as index starts with 1, index will be the number of unique numbers
 };
-// var removeDuplicates = function (nums) {
-//   if (nums.length === 0) return 0;
+/*Another solution
+var removeDuplicates = function(nums) {
+    let unique = 1; // at least it will have one unique number
+    
+    let left = 0;
+    let right = left +1;
+    
+    while(left < right && right <=nums.length-1){
+       
+        if(nums[left] === nums[right]){
+            right++;
+        }else{                  
+            [nums[left+1]] = [nums[right]];            
+            unique++; //-- if find a differente number, sum to unique
+            left++;
+            right++;
+        }
+        
+    }
+    
+    return unique;
+    
+ 
+};
 
-//   let i = 0;
+console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
 
-//   for (let j = 1; j < nums.length; j++) {
-//     if (nums[j] !== nums[i]) {
-//       i++;
-//       nums[i] = nums[j];
-//     }
-//   }
 
-//   console.log('nums', nums, i);
 
-//   return i + 1;
-// };
+
+
+
+
+
+*/
