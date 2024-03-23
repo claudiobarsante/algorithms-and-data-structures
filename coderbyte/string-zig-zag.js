@@ -13,7 +13,42 @@ Output: kjajfavlm
  */
 
 // -- Tip --> https://dev.to/alisabaj/the-zigzag-conversion-problem-3nne
+/**/
+/**
+ * @param {string} s
+ * @param {number} numRows
+ * @return {string}
+ */
+var convert = function (s, numRows) {
+  if (numRows === 1 || s.length < numRows) return s;
 
+  let rows = Array.from({ length: numRows }, () => []);
+  let currentRow = 0;
+  let isReverse = false;
+  let result = '';
+
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+
+    rows[currentRow].push(char);
+
+    if (isReverse) {
+      currentRow--;
+    } else {
+      currentRow++;
+    }
+
+    if (currentRow === numRows - 1) isReverse = true;
+    if (currentRow === 0) isReverse = false;
+  }
+
+  for (let i = 0; i < rows.length; i++) {
+    const sub = rows[i];
+    result += sub.join('');
+  }
+
+  return result;
+};
 function StringZigzag(strArr) {
   const string = strArr[0];
   const range = Number(strArr[1]);
