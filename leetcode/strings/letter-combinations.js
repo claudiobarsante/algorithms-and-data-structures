@@ -66,7 +66,7 @@ var letterCombinations = function (digits) {
   return output;
 };
 
-console.log(letterCombinations('34'));
+console.log(letterCombinations('23'));
 /*
 -- 0 
 -- 1 a
