@@ -1,3 +1,19 @@
+// -- other solution
+// -- I like this one
+// -- O(n)
+// -- s(n)
+function solution(A, K) {
+  // Implement your solution here
+  const output = [];
+  const arrayLength = A.length;
+  for (let i = 0; i < arrayLength; i++) {
+    const newPosition = (i + K) % arrayLength;
+    output[newPosition] = A[i];
+  }
+
+  return output;
+}
+
 function solution(A, K) {
   if (A.length <= 1) return A;
 
