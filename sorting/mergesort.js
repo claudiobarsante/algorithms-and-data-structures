@@ -43,3 +43,5 @@ const mergesort = array => {
 };
 
 console.log(mergesort([8, 7, 6, 5, 4, 3, 2, 1]));
+
+// - test
